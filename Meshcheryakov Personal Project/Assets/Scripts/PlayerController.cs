@@ -18,12 +18,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Walls();
+        MovePlayer();
+    }
+    
+    void MovePlayer()
+    {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         //moves player based on arrow key input
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
-        //Keeps player on screen x axis
+    }
+
+    //makes walls
+    void Walls()
+    {
+        //Keeps player on screen z axis
         if (transform.position.z > zBound)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
