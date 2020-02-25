@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private float xBound = 15.0f;
     private float zBound = 15.0f;
+    private float buffer = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,9 @@ public class PlayerController : MonoBehaviour
     
     void MovePlayer()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         //moves player based on arrow key input
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
-    }
+        playerRb.AddForce(Vector3.right * speed * verticalInput);    }
 
     //makes walls
     void Walls()
@@ -37,20 +35,20 @@ public class PlayerController : MonoBehaviour
         //Keeps player on screen z axis
         if (transform.position.z > zBound)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound - buffer);
         }
         if (transform.position.z < -zBound)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBound + buffer);
         }
         //Keeps player on screen x axis
         if (transform.position.x > xBound)
         {
-            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
+            transform.position = new Vector3(xBound - buffer, transform.position.y, transform.position.z);
         }
         if (transform.position.x < -xBound)
         {
-            transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-xBound + buffer, transform.position.y, transform.position.z);
         }
     }
 }
