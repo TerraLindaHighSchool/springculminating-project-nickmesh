@@ -31,10 +31,12 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
         }
-        else if (collision.gameObject.CompareTag("Obstacle"))
+        else if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Bomb"))
         {
             gameOver = true;
             Debug.Log("Game Over");
         }
     }
+
+    
 }
