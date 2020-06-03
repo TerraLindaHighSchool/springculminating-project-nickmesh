@@ -1,5 +1,5 @@
 # Unity-Starter
 Press spacebar to jump
-Left-click to destroy bombs
-Levels have not been added yet, so go on for as long as you can
+Left-click to destroy bombs and collect apples
+Collect 5 apples to win
 Good luck!
