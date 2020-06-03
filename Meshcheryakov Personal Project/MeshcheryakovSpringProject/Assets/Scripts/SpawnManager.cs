@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject coinPrefab;
     private Vector3 hurdleSpawnPos = new Vector3(25, 0, 0);
     private Vector3 bombSpawnPos = new Vector3(25, 2, 0);
+    private Vector3 coinSpawnPos = new Vector3(25, 6, 0);
     private float startDelay = 2.0f;
     private float repeatRate = 2.2f;
     private PlayerController playerControllerScript;
@@ -31,6 +32,7 @@ public class SpawnManager : MonoBehaviour
         {
             Instantiate(hurdlePrefab, hurdleSpawnPos, hurdlePrefab.transform.rotation);
             Instantiate(bombPrefab, bombSpawnPos, bombPrefab.transform.rotation);
+            Instantiate(coinPrefab, coinSpawnPos, coinPrefab.transform.rotation);
         }
     }
 }
